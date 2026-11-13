@@ -1,0 +1,79 @@
+@import "tailwindcss";
+
+@theme inline {
+  --color-brand: #1a7a43;
+  --color-brand-deep: #0d4426;
+  --color-gold: #b68a3a;
+  --color-ink: #14231a;
+  --color-muted: #52645a;
+  --color-foam: #f2f7f3;
+  --color-line: #d7e6db;
+  --color-rose: #9b2c4a;
+  --font-sans: var(--font-jakarta), "Segoe UI", sans-serif;
+  --font-bengali: var(--font-noto-bengali), "Nirmala UI", sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--color-foam);
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+}
+
+::selection {
+  background: #1a7a43;
+  color: #ffffff;
+}
+
+:focus-visible {
+  outline: 2px solid #1a7a43;
+  outline-offset: 3px;
+}
+
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.marquee {
+  overflow-x: clip;
+}
+
+.marquee-band {
+  width: 220vw;
+  margin-left: calc(50% - 110vw);
+  transform: rotate(-2.8deg);
+  overflow: hidden;
+}
+
+.marquee-track {
+  animation: marquee 42s linear infinite;
+  will-change: transform;
+}
+
+.marquee:hover .marquee-track {
+  animation-play-state: paused;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .marquee-track {
+    animation: none;
+  }
+
+  .marquee-band {
+    transform: none;
+    width: 100%;
+    margin-left: 0;
+  }
+}
