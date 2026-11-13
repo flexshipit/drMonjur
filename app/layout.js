@@ -1,18 +1,17 @@
-import { Instrument_Serif, Noto_Sans_Bengali, Plus_Jakarta_Sans } from "next/font/google";
+import { Noto_Sans_Bengali, Poppins, Roboto } from "next/font/google";
 import "./globals.css";
 
-const jakarta = Plus_Jakarta_Sans({
+const roboto = Roboto({
   subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
-  variable: "--font-jakarta",
+  weight: ["400", "500", "700"],
+  variable: "--font-roboto",
   display: "swap",
 });
 
-const instrument = Instrument_Serif({
+const poppins = Poppins({
   subsets: ["latin"],
-  weight: ["400"],
-  style: ["normal", "italic"],
-  variable: "--font-instrument",
+  weight: ["500", "600", "700"],
+  variable: "--font-poppins",
   display: "swap",
 });
 
@@ -37,7 +36,7 @@ export default function RootLayout({ children }) {
   return (
     <html
       lang="en"
-      className={`${jakarta.variable} ${instrument.variable} ${bengali.variable} h-full antialiased`}
+      className={`${roboto.variable} ${poppins.variable} ${bengali.variable} h-full antialiased`}
     >
       <body className="min-h-full bg-sand font-sans text-ink" suppressHydrationWarning>
         {children}

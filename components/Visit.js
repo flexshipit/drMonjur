@@ -67,11 +67,11 @@ export default function Visit() {
   }
 
   return (
-    <section id="visit" className="scroll-mt-24 bg-forest py-20 text-ivory sm:py-28">
+    <section id="visit" className="scroll-mt-24 bg-forest py-16 text-ivory sm:py-20">
       <Container className="grid items-start gap-12 lg:grid-cols-[0.9fr_1.1fr]">
         <div>
           <Eyebrow light>Visit</Eyebrow>
-          <h2 className="font-display mt-4 text-3xl tracking-[-0.03em] sm:text-4xl">
+          <h2 className="font-display mt-3 text-3xl font-semibold sm:text-4xl">
             Call, write, or prepare a short visit note.
           </h2>
           <p className="mt-4 max-w-md text-base leading-7 text-ivory/75 sm:text-lg">
@@ -84,7 +84,7 @@ export default function Visit() {
             {chambers.map((chamber) => (
               <div
                 key={chamber.id}
-                className="rounded-[1.5rem] border border-ivory/15 bg-white/5 p-6"
+                className="border border-ivory/15 bg-white/5 p-6"
               >
                 <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-mint">
                   {chamber.area}
@@ -109,7 +109,7 @@ export default function Visit() {
                 </div>
               </div>
             ))}
-            <div className="rounded-[1.5rem] border border-ivory/15 bg-white/5 p-6">
+            <div className="border border-ivory/15 bg-white/5 p-6">
               <p className="inline-flex items-center gap-2 text-sm">
                 <Mail className="size-4 text-copper" aria-hidden />
                 <a href={doctor.emailHref} className="hover:underline">
@@ -123,7 +123,7 @@ export default function Visit() {
           </div>
         </div>
 
-        <div className="rounded-[1.75rem] border border-ivory/10 bg-ivory p-6 text-ink shadow-[0_30px_70px_-36px_rgba(0,0,0,0.45)] sm:p-8">
+        <div className="border border-ivory/10 bg-ivory p-6 text-ink sm:p-8">
           {note ? (
             <div>
               <p className="inline-flex items-center gap-2 text-sm font-semibold text-teal">
@@ -133,7 +133,7 @@ export default function Visit() {
               <h3
                 tabIndex={-1}
                 ref={headingRef}
-                className="font-display mt-3 text-2xl tracking-tight outline-none"
+                className="font-display mt-3 text-2xl font-semibold outline-none"
               >
                 {note.name}
               </h3>
@@ -162,7 +162,7 @@ export default function Visit() {
                 <button
                   type="button"
                   onClick={copyNote}
-                  className="inline-flex items-center justify-center gap-2 rounded-full bg-forest px-5 py-3 text-sm font-semibold text-ivory hover:bg-teal"
+                  className="inline-flex items-center justify-center gap-2 bg-forest px-5 py-3 text-sm font-semibold text-ivory hover:bg-teal"
                 >
                   {copied ? <Check className="size-4" /> : <Copy className="size-4" />}
                   {copied ? "Copied" : "Copy visit note"}
@@ -173,7 +173,7 @@ export default function Visit() {
                     setNote(null);
                     setValues(initial);
                   }}
-                  className="rounded-full border border-line px-5 py-3 text-sm font-semibold text-forest hover:bg-sand"
+                  className="border border-line px-5 py-3 text-sm font-semibold text-forest hover:bg-sand"
                 >
                   Start another
                 </button>
@@ -181,7 +181,7 @@ export default function Visit() {
             </div>
           ) : (
             <form onSubmit={onSubmit} noValidate>
-              <h3 className="font-display text-2xl tracking-tight">
+              <h3 className="font-display text-2xl font-semibold">
                 Prepare a visit note
               </h3>
               <p className="mt-2 text-sm leading-6 text-muted">
@@ -219,7 +219,7 @@ export default function Visit() {
                     onChange={(event) => update("concern", event.target.value)}
                     aria-invalid={Boolean(errors.concern)}
                     aria-describedby={errors.concern ? `${formId}-concern-error` : undefined}
-                    className="mt-2 w-full appearance-none rounded-2xl border border-line bg-white px-4 py-3 text-sm text-ink outline-none focus:border-teal"
+                    className="mt-2 w-full appearance-none border border-line bg-white px-4 py-3 text-sm text-ink outline-none focus:border-teal"
                   >
                     <option value="">Select one</option>
                     {concerns.map((item) => (
@@ -247,14 +247,14 @@ export default function Visit() {
                     maxLength={400}
                     value={values.note}
                     onChange={(event) => update("note", event.target.value)}
-                    className="mt-2 w-full resize-y rounded-2xl border border-line px-4 py-3 text-sm outline-none focus:border-teal"
+                    className="mt-2 w-full resize-y border border-line px-4 py-3 text-sm outline-none focus:border-teal"
                   />
                 </div>
               </div>
 
               <button
                 type="submit"
-                className="mt-6 inline-flex w-full items-center justify-center rounded-full bg-forest px-5 py-3.5 text-sm font-semibold text-ivory hover:bg-teal"
+                className="mt-6 inline-flex w-full items-center justify-center bg-forest px-5 py-3.5 text-sm font-semibold text-ivory hover:bg-teal"
               >
                 Create visit note
               </button>
@@ -278,7 +278,7 @@ function Field({ id, label, error, value, onChange, ...props }) {
         onChange={(event) => onChange(event.target.value)}
         aria-invalid={Boolean(error)}
         aria-describedby={error ? `${id}-error` : undefined}
-        className="mt-2 w-full rounded-2xl border border-line px-4 py-3 text-sm outline-none focus:border-teal"
+        className="mt-2 w-full border border-line px-4 py-3 text-sm outline-none focus:border-teal"
         {...props}
       />
       {error ? (

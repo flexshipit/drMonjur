@@ -34,7 +34,7 @@ export default function HomePage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
       <div className="bg-forest text-ivory">
-        <div className="mx-auto flex w-full max-w-6xl flex-wrap items-center justify-between gap-3 px-5 py-2.5 text-sm sm:px-8">
+        <div className="shell flex flex-wrap items-center justify-between gap-3 py-2.5 text-sm">
           <p className="font-bengali">
             <span className="font-semibold">শুক্রবার · গাজীপুর</span>
             <span className="text-ivory/70"> · পপুলার ডায়াগনস্টিক · ৫টা–৮টা</span>

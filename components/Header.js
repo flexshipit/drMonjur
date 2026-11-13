@@ -8,15 +8,7 @@ import { doctor, nav } from "@/lib/profile";
 
 export default function Header() {
   const [open, setOpen] = useState(false);
-  const [scrolled, setScrolled] = useState(false);
   const reduce = useReducedMotion();
-
-  useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 8);
-    onScroll();
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
-  }, []);
 
   useEffect(() => {
     document.body.style.overflow = open ? "hidden" : "";
@@ -32,21 +24,17 @@ export default function Header() {
   return (
     <header
       id="top"
-      className={`sticky top-0 z-50 border-b transition-colors ${
-        scrolled || open
-          ? "border-line/80 bg-ivory/90 shadow-[0_12px_40px_-24px_rgba(11,61,54,0.45)]"
-          : "border-transparent bg-sand/80"
-      } backdrop-blur-xl`}
+      className="sticky top-0 z-50 border-b border-line bg-ivory"
     >
       <a
         href="#content"
-        className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-3 focus:z-50 focus:rounded-full focus:bg-forest focus:px-4 focus:py-2 focus:text-ivory"
+        className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-3 focus:z-50 focus:bg-forest focus:px-4 focus:py-2 focus:text-ivory"
       >
         Skip to content
       </a>
-      <div className="mx-auto flex h-[4.6rem] w-full max-w-6xl items-center justify-between gap-4 px-5 sm:px-8">
+      <div className="shell flex h-16 items-center justify-between gap-4">
         <a href="#top" className="flex items-center gap-3" onClick={close}>
-          <span className="relative block size-11 overflow-hidden rounded-full ring-2 ring-teal/30">
+          <span className="relative block size-10 overflow-hidden">
             <Image
               src="/images/portrait-head.jpg"
               alt=""
@@ -57,10 +45,10 @@ export default function Header() {
             />
           </span>
           <span className="leading-tight">
-            <span className="font-display block text-[1.05rem] tracking-tight text-forest">
+            <span className="font-display block text-[15px] font-semibold text-forest">
               {doctor.shortName}
             </span>
-            <span className="block text-[11px] uppercase tracking-[0.16em] text-muted">
+            <span className="block text-xs text-muted">
               Clinical oncology
             </span>
           </span>
@@ -81,21 +69,21 @@ export default function Header() {
         <div className="flex items-center gap-2">
           <a
             href={doctor.mobileHref}
-            className="hidden items-center gap-2 rounded-full border border-line bg-ivory px-3.5 py-2.5 text-sm font-semibold text-forest transition-colors hover:border-teal/40 md:inline-flex"
+            className="hidden items-center gap-2 border border-line bg-ivory px-3.5 py-2 text-sm font-medium text-forest hover:border-teal/50 md:inline-flex"
           >
             <Phone className="size-4 text-teal" aria-hidden />
             {doctor.mobile}
           </a>
           <a
             href="#visit"
-            className="hidden items-center gap-2 rounded-full bg-forest px-4 py-2.5 text-sm font-semibold text-ivory transition-colors hover:bg-teal sm:inline-flex"
+            className="hidden items-center gap-2 bg-forest px-4 py-2 text-sm font-semibold text-ivory hover:bg-teal sm:inline-flex"
           >
             Book a visit
             <ArrowRight className="size-4" aria-hidden />
           </a>
           <button
             type="button"
-            className="inline-flex size-11 items-center justify-center rounded-full text-forest lg:hidden"
+            className="inline-flex size-10 items-center justify-center text-forest lg:hidden"
             aria-expanded={open}
             aria-controls="mobile-nav"
             onClick={() => setOpen((value) => !value)}
@@ -122,7 +110,7 @@ export default function Header() {
                   key={item.href}
                   href={item.href}
                   onClick={close}
-                  className="rounded-2xl px-3 py-3 text-base font-medium text-forest hover:bg-mint"
+                  className="px-3 py-3 text-base font-medium text-forest hover:bg-mint"
                 >
                   {item.label}
                 </a>
@@ -130,7 +118,7 @@ export default function Header() {
               <a
                 href={doctor.mobileHref}
                 onClick={close}
-                className="mt-2 inline-flex items-center justify-center gap-2 rounded-full border border-line bg-ivory px-4 py-3 text-sm font-semibold text-forest"
+                className="mt-2 inline-flex items-center justify-center gap-2 border border-line bg-ivory px-4 py-3 text-sm font-semibold text-forest"
               >
                 <Phone className="size-4 text-teal" aria-hidden />
                 {doctor.mobile}
@@ -138,7 +126,7 @@ export default function Header() {
               <a
                 href="#visit"
                 onClick={close}
-                className="inline-flex items-center justify-center gap-2 rounded-full bg-forest px-4 py-3 text-sm font-semibold text-ivory"
+                className="inline-flex items-center justify-center gap-2 bg-forest px-4 py-3 text-sm font-semibold text-ivory"
               >
                 Book a visit
                 <ArrowRight className="size-4" aria-hidden />

@@ -6,7 +6,7 @@ export default function Footer() {
     <footer className="bg-[#072823] py-14 text-ivory">
       <Container className="grid gap-10 md:grid-cols-[1.4fr_1fr]">
         <div>
-          <p className="font-display text-lg">{doctor.name}</p>
+          <p className="font-display text-lg font-semibold">{doctor.name}</p>
           <p className="mt-1 font-bengali text-sm text-ivory/70">{doctor.nameBn}</p>
           <p className="mt-4 max-w-md text-sm leading-6 text-ivory/75">
             MBBS, BCS (Health), MD (Clinical Oncology), FCPS (Medicine, FP),
