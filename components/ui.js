@@ -9,12 +9,12 @@ export function Container({ className = "", children }) {
 export function Eyebrow({ children, light = false }) {
   return (
     <p
-      className={`inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.18em] ${
-        light ? "text-white/80" : "text-brand"
+      className={`inline-flex items-center gap-2 text-[11px] font-semibold uppercase tracking-[0.22em] ${
+        light ? "text-mint" : "text-teal"
       }`}
     >
       <span
-        className={`size-1.5 rounded-full ${light ? "bg-gold" : "bg-brand"}`}
+        className={`size-1.5 rounded-full ${light ? "bg-copper" : "bg-orchid"}`}
         aria-hidden
       />
       {children}

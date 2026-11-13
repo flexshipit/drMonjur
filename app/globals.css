@@ -1,15 +1,19 @@
 @import "tailwindcss";
 
 @theme inline {
-  --color-brand: #1a7a43;
-  --color-brand-deep: #0d4426;
-  --color-gold: #b68a3a;
-  --color-ink: #14231a;
-  --color-muted: #52645a;
-  --color-foam: #f2f7f3;
-  --color-line: #d7e6db;
-  --color-rose: #9b2c4a;
+  --color-ink: #14201c;
+  --color-forest: #0b3d36;
+  --color-teal: #18786c;
+  --color-mint: #e7f3ef;
+  --color-sand: #f6f2ea;
+  --color-ivory: #fffcf7;
+  --color-orchid: #5c3d91;
+  --color-copper: #c45d3a;
+  --color-muted: #5a6662;
+  --color-line: #d5dfda;
+  --color-rose: #b42318;
   --font-sans: var(--font-jakarta), "Segoe UI", sans-serif;
+  --font-display: var(--font-instrument), Georgia, "Times New Roman", serif;
   --font-bengali: var(--font-noto-bengali), "Nirmala UI", sans-serif;
 }
 
@@ -18,62 +22,34 @@ html {
 }
 
 body {
-  background: var(--color-foam);
+  background: var(--color-sand);
   color: var(--color-ink);
   font-family: var(--font-sans);
 }
 
 ::selection {
-  background: #1a7a43;
-  color: #ffffff;
+  background: #0b3d36;
+  color: #fffcf7;
 }
 
 :focus-visible {
-  outline: 2px solid #1a7a43;
+  outline: 2px solid #18786c;
   outline-offset: 3px;
 }
 
-@keyframes marquee {
-  from {
-    transform: translateX(0);
-  }
-  to {
-    transform: translateX(-50%);
-  }
+.font-display {
+  font-family: var(--font-display);
 }
 
-.marquee {
-  overflow-x: clip;
-}
-
-.marquee-band {
-  width: 220vw;
-  margin-left: calc(50% - 110vw);
-  transform: rotate(-2.8deg);
-  overflow: hidden;
-}
-
-.marquee-track {
-  animation: marquee 42s linear infinite;
-  will-change: transform;
-}
-
-.marquee:hover .marquee-track {
-  animation-play-state: paused;
+.blob {
+  background:
+    radial-gradient(circle at 18% 20%, rgba(24, 120, 108, 0.18), transparent 42%),
+    radial-gradient(circle at 88% 8%, rgba(92, 61, 145, 0.14), transparent 36%),
+    radial-gradient(circle at 70% 78%, rgba(196, 93, 58, 0.1), transparent 40%);
 }
 
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
-  }
-
-  .marquee-track {
-    animation: none;
-  }
-
-  .marquee-band {
-    transform: none;
-    width: 100%;
-    margin-left: 0;
   }
 }

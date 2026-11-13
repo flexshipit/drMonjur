@@ -3,19 +3,23 @@ import { Container } from "@/components/ui";
 
 export default function Footer() {
   return (
-    <footer className="bg-ink py-14 text-white">
+    <footer className="bg-[#072823] py-14 text-ivory">
       <Container className="grid gap-10 md:grid-cols-[1.4fr_1fr]">
         <div>
-          <p className="text-lg font-semibold">{doctor.name}</p>
-          <p className="mt-1 font-bengali text-sm text-white/70">{doctor.nameBn}</p>
-          <p className="mt-4 max-w-md text-sm leading-6 text-white/75">
-            MBBS, BCS (Health), MD (Clinical Oncology), MACP (USA), CCD
-            (BIRDEM). {doctor.title}. BMDC {doctor.bmdc}.
+          <p className="font-display text-lg">{doctor.name}</p>
+          <p className="mt-1 font-bengali text-sm text-ivory/70">{doctor.nameBn}</p>
+          <p className="mt-4 max-w-md text-sm leading-6 text-ivory/75">
+            MBBS, BCS (Health), MD (Clinical Oncology), FCPS (Medicine, FP),
+            MACP (USA). {doctor.title}. BMDC {doctor.bmdc}.
           </p>
-          <p className="mt-3 text-sm text-white/75">
+          <p className="mt-3 text-sm text-ivory/75">
             {doctor.hospital}, {doctor.city}.
           </p>
-          <p className="mt-3 text-sm text-white/75">
+          <p className="mt-3 text-sm text-ivory/75">
+            Chambers: Popular Diagnostic Centre Ltd., Gazipur · New Peacy Lab
+            Ltd., Mirpur-1.
+          </p>
+          <p className="mt-3 text-sm text-ivory/75">
             {doctor.mobile} · {doctor.email}
           </p>
         </div>
@@ -24,15 +28,15 @@ export default function Footer() {
             <a
               key={item.href}
               href={item.href}
-              className="text-sm font-medium text-white/80 hover:text-white"
+              className="text-sm font-medium text-ivory/80 hover:text-ivory"
             >
               {item.label}
             </a>
           ))}
         </nav>
       </Container>
-      <Container className="mt-10 border-t border-white/10 pt-6">
-        <p className="text-xs text-white/50">
+      <Container className="mt-10 border-t border-ivory/10 pt-6">
+        <p className="text-xs text-ivory/50">
           © 2026 {doctor.shortName}. BMDC {doctor.bmdc}.
         </p>
       </Container>

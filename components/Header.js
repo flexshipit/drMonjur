@@ -34,33 +34,35 @@ export default function Header() {
       id="top"
       className={`sticky top-0 z-50 border-b transition-colors ${
         scrolled || open
-          ? "border-line bg-white/95 shadow-sm"
-          : "border-transparent bg-white/80"
+          ? "border-line/80 bg-ivory/90 shadow-[0_12px_40px_-24px_rgba(11,61,54,0.45)]"
+          : "border-transparent bg-sand/80"
       } backdrop-blur-xl`}
     >
       <a
         href="#content"
-        className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-3 focus:z-50 focus:rounded-full focus:bg-brand focus:px-4 focus:py-2 focus:text-white"
+        className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-3 focus:z-50 focus:rounded-full focus:bg-forest focus:px-4 focus:py-2 focus:text-ivory"
       >
         Skip to content
       </a>
-      <div className="mx-auto flex h-[4.5rem] w-full max-w-6xl items-center justify-between gap-4 px-5 sm:px-8">
+      <div className="mx-auto flex h-[4.6rem] w-full max-w-6xl items-center justify-between gap-4 px-5 sm:px-8">
         <a href="#top" className="flex items-center gap-3" onClick={close}>
-          <span className="relative block size-11 overflow-hidden rounded-full ring-2 ring-brand/20">
+          <span className="relative block size-11 overflow-hidden rounded-full ring-2 ring-teal/30">
             <Image
               src="/images/portrait-head.jpg"
               alt=""
               fill
               sizes="44px"
-              className="object-cover object-[center_20%]"
+              className="object-cover object-[center_18%]"
               priority
             />
           </span>
           <span className="leading-tight">
-            <span className="block text-sm font-semibold text-ink">
+            <span className="font-display block text-[1.05rem] tracking-tight text-forest">
               {doctor.shortName}
             </span>
-            <span className="block text-xs text-muted">Clinical oncology</span>
+            <span className="block text-[11px] uppercase tracking-[0.16em] text-muted">
+              Clinical oncology
+            </span>
           </span>
         </a>
 
@@ -69,7 +71,7 @@ export default function Header() {
             <a
               key={item.href}
               href={item.href}
-              className="text-sm font-medium text-muted transition-colors hover:text-ink"
+              className="text-sm font-medium text-muted transition-colors hover:text-forest"
             >
               {item.label}
             </a>
@@ -79,21 +81,21 @@ export default function Header() {
         <div className="flex items-center gap-2">
           <a
             href={doctor.mobileHref}
-            className="hidden items-center gap-2 rounded-full bg-foam px-3.5 py-2.5 text-sm font-semibold text-ink ring-1 ring-line transition-colors hover:bg-white md:inline-flex"
+            className="hidden items-center gap-2 rounded-full border border-line bg-ivory px-3.5 py-2.5 text-sm font-semibold text-forest transition-colors hover:border-teal/40 md:inline-flex"
           >
-            <Phone className="size-4 text-brand" aria-hidden />
+            <Phone className="size-4 text-teal" aria-hidden />
             {doctor.mobile}
           </a>
           <a
             href="#visit"
-            className="hidden items-center gap-2 rounded-full bg-brand px-4 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-brand-deep sm:inline-flex"
+            className="hidden items-center gap-2 rounded-full bg-forest px-4 py-2.5 text-sm font-semibold text-ivory transition-colors hover:bg-teal sm:inline-flex"
           >
             Book a visit
             <ArrowRight className="size-4" aria-hidden />
           </a>
           <button
             type="button"
-            className="inline-flex size-11 items-center justify-center rounded-full text-ink lg:hidden"
+            className="inline-flex size-11 items-center justify-center rounded-full text-forest lg:hidden"
             aria-expanded={open}
             aria-controls="mobile-nav"
             onClick={() => setOpen((value) => !value)}
@@ -112,7 +114,7 @@ export default function Header() {
             initial={reduce ? false : { height: 0, opacity: 0 }}
             animate={{ height: "auto", opacity: 1 }}
             exit={reduce ? undefined : { height: 0, opacity: 0 }}
-            className="overflow-hidden border-t border-line bg-white lg:hidden"
+            className="overflow-hidden border-t border-line bg-ivory lg:hidden"
           >
             <div className="flex flex-col gap-1 px-5 py-4">
               {nav.map((item) => (
@@ -120,7 +122,7 @@ export default function Header() {
                   key={item.href}
                   href={item.href}
                   onClick={close}
-                  className="rounded-xl px-3 py-3 text-base font-medium text-ink hover:bg-foam"
+                  className="rounded-2xl px-3 py-3 text-base font-medium text-forest hover:bg-mint"
                 >
                   {item.label}
                 </a>
@@ -128,15 +130,15 @@ export default function Header() {
               <a
                 href={doctor.mobileHref}
                 onClick={close}
-                className="mt-2 inline-flex items-center justify-center gap-2 rounded-full bg-foam px-4 py-3 text-sm font-semibold text-ink ring-1 ring-line"
+                className="mt-2 inline-flex items-center justify-center gap-2 rounded-full border border-line bg-ivory px-4 py-3 text-sm font-semibold text-forest"
               >
-                <Phone className="size-4 text-brand" aria-hidden />
+                <Phone className="size-4 text-teal" aria-hidden />
                 {doctor.mobile}
               </a>
               <a
                 href="#visit"
                 onClick={close}
-                className="inline-flex items-center justify-center gap-2 rounded-full bg-brand px-4 py-3 text-sm font-semibold text-white"
+                className="inline-flex items-center justify-center gap-2 rounded-full bg-forest px-4 py-3 text-sm font-semibold text-ivory"
               >
                 Book a visit
                 <ArrowRight className="size-4" aria-hidden />

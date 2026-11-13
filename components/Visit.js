@@ -67,69 +67,73 @@ export default function Visit() {
   }
 
   return (
-    <section id="visit" className="scroll-mt-24 bg-brand-deep py-20 text-white sm:py-28">
+    <section id="visit" className="scroll-mt-24 bg-forest py-20 text-ivory sm:py-28">
       <Container className="grid items-start gap-12 lg:grid-cols-[0.9fr_1.1fr]">
         <div>
           <Eyebrow light>Visit</Eyebrow>
-          <h2 className="mt-4 text-3xl font-semibold tracking-[-0.03em] sm:text-4xl">
+          <h2 className="font-display mt-4 text-3xl tracking-[-0.03em] sm:text-4xl">
             Call, write, or prepare a short visit note.
           </h2>
-          <p className="mt-4 max-w-md text-base leading-7 text-white/80 sm:text-lg">
-            Serials for the Gazipur chamber are taken on the Popular hotline.
-            His personal mobile and email are listed here as given.
+          <p className="mt-4 max-w-md text-base leading-7 text-ivory/75 sm:text-lg">
+            Serials for Gazipur are taken on the Popular hotline. For Mirpur,
+            call New Peacy Lab Ltd. His personal mobile and email are listed
+            here as given.
           </p>
 
           <div className="mt-8 space-y-4">
             {chambers.map((chamber) => (
               <div
-                key={chamber.name}
-                className="rounded-[1.5rem] bg-white/10 p-6 ring-1 ring-white/15"
+                key={chamber.id}
+                className="rounded-[1.5rem] border border-ivory/15 bg-white/5 p-6"
               >
-                <p className="text-xs font-semibold uppercase tracking-[0.16em] text-white/70">
+                <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-mint">
                   {chamber.area}
                 </p>
-                <p className="mt-3 text-xl font-semibold">{chamber.name}</p>
-                <p className="mt-1 text-white/80">
-                  {chamber.room} · {chamber.hours}
-                </p>
+                <p className="font-display mt-3 text-xl">{chamber.name}</p>
+                <p className="mt-1 text-ivory/75">{chamber.hours}</p>
                 <p className="mt-4 inline-flex items-start gap-2 text-sm">
                   <MapPin className="mt-0.5 size-4 shrink-0" aria-hidden />
                   {chamber.address}
                 </p>
-                <a
-                  href={chamber.hotlineHref}
-                  className="mt-3 inline-flex items-center gap-2 text-sm font-semibold text-gold"
-                >
-                  <Phone className="size-4" aria-hidden />
-                  {chamber.hotline}
-                </a>
+                <div className="mt-3 flex flex-wrap gap-x-4 gap-y-2">
+                  {chamber.phones.map((phone) => (
+                    <a
+                      key={phone.value}
+                      href={phone.href}
+                      className="inline-flex items-center gap-2 text-sm font-semibold text-mint"
+                    >
+                      <Phone className="size-4" aria-hidden />
+                      {phone.value}
+                    </a>
+                  ))}
+                </div>
               </div>
             ))}
-            <div className="rounded-[1.5rem] bg-white/10 p-6 ring-1 ring-white/15">
+            <div className="rounded-[1.5rem] border border-ivory/15 bg-white/5 p-6">
               <p className="inline-flex items-center gap-2 text-sm">
-                <Mail className="size-4 text-gold" aria-hidden />
+                <Mail className="size-4 text-copper" aria-hidden />
                 <a href={doctor.emailHref} className="hover:underline">
                   {doctor.email}
                 </a>
               </p>
-              <p className="mt-3 text-sm text-white/75">
+              <p className="mt-3 text-sm text-ivory/70">
                 BMDC {doctor.bmdc}. {doctor.bcs}.
               </p>
             </div>
           </div>
         </div>
 
-        <div className="rounded-[1.75rem] bg-white p-6 text-ink shadow-[0_30px_70px_-36px_rgba(0,0,0,0.45)] sm:p-8">
+        <div className="rounded-[1.75rem] border border-ivory/10 bg-ivory p-6 text-ink shadow-[0_30px_70px_-36px_rgba(0,0,0,0.45)] sm:p-8">
           {note ? (
             <div>
-              <p className="inline-flex items-center gap-2 text-sm font-semibold text-brand">
+              <p className="inline-flex items-center gap-2 text-sm font-semibold text-teal">
                 <Check className="size-4" aria-hidden />
                 Visit note ready
               </p>
               <h3
                 tabIndex={-1}
                 ref={headingRef}
-                className="mt-3 text-2xl font-semibold tracking-tight outline-none"
+                className="font-display mt-3 text-2xl tracking-tight outline-none"
               >
                 {note.name}
               </h3>
@@ -151,14 +155,14 @@ export default function Visit() {
               </dl>
               <p className="mt-5 text-sm leading-6 text-muted">
                 This page keeps the note on your screen. It does not send it to
-                the chamber. Call {doctor.mobile} or the Popular hotline 09666787816
-                to confirm a serial.
+                the chamber. Call {doctor.mobile}, the Popular hotline
+                09666787816, or New Peacy Lab Ltd. to confirm a serial.
               </p>
               <div className="mt-6 flex flex-col gap-3 sm:flex-row">
                 <button
                   type="button"
                   onClick={copyNote}
-                  className="inline-flex items-center justify-center gap-2 rounded-full bg-brand px-5 py-3 text-sm font-semibold text-white hover:bg-brand-deep"
+                  className="inline-flex items-center justify-center gap-2 rounded-full bg-forest px-5 py-3 text-sm font-semibold text-ivory hover:bg-teal"
                 >
                   {copied ? <Check className="size-4" /> : <Copy className="size-4" />}
                   {copied ? "Copied" : "Copy visit note"}
@@ -169,7 +173,7 @@ export default function Visit() {
                     setNote(null);
                     setValues(initial);
                   }}
-                  className="rounded-full px-5 py-3 text-sm font-semibold text-ink ring-1 ring-line hover:bg-foam"
+                  className="rounded-full border border-line px-5 py-3 text-sm font-semibold text-forest hover:bg-sand"
                 >
                   Start another
                 </button>
@@ -177,7 +181,7 @@ export default function Visit() {
             </div>
           ) : (
             <form onSubmit={onSubmit} noValidate>
-              <h3 className="text-2xl font-semibold tracking-tight">
+              <h3 className="font-display text-2xl tracking-tight">
                 Prepare a visit note
               </h3>
               <p className="mt-2 text-sm leading-6 text-muted">
@@ -205,7 +209,7 @@ export default function Visit() {
                 <div>
                   <label
                     htmlFor={`${formId}-concern`}
-                    className="text-sm font-semibold text-ink"
+                    className="text-sm font-semibold text-forest"
                   >
                     Area of concern
                   </label>
@@ -215,7 +219,7 @@ export default function Visit() {
                     onChange={(event) => update("concern", event.target.value)}
                     aria-invalid={Boolean(errors.concern)}
                     aria-describedby={errors.concern ? `${formId}-concern-error` : undefined}
-                    className="mt-2 w-full appearance-none rounded-xl border border-line bg-white px-4 py-3 text-sm text-ink outline-none focus:border-brand"
+                    className="mt-2 w-full appearance-none rounded-2xl border border-line bg-white px-4 py-3 text-sm text-ink outline-none focus:border-teal"
                   >
                     <option value="">Select one</option>
                     {concerns.map((item) => (
@@ -233,7 +237,7 @@ export default function Visit() {
                 <div>
                   <label
                     htmlFor={`${formId}-note`}
-                    className="text-sm font-semibold text-ink"
+                    className="text-sm font-semibold text-forest"
                   >
                     Note <span className="font-normal text-muted">(optional)</span>
                   </label>
@@ -243,14 +247,14 @@ export default function Visit() {
                     maxLength={400}
                     value={values.note}
                     onChange={(event) => update("note", event.target.value)}
-                    className="mt-2 w-full resize-y rounded-xl border border-line px-4 py-3 text-sm outline-none focus:border-brand"
+                    className="mt-2 w-full resize-y rounded-2xl border border-line px-4 py-3 text-sm outline-none focus:border-teal"
                   />
                 </div>
               </div>
 
               <button
                 type="submit"
-                className="mt-6 inline-flex w-full items-center justify-center rounded-full bg-brand px-5 py-3.5 text-sm font-semibold text-white hover:bg-brand-deep"
+                className="mt-6 inline-flex w-full items-center justify-center rounded-full bg-forest px-5 py-3.5 text-sm font-semibold text-ivory hover:bg-teal"
               >
                 Create visit note
               </button>
@@ -265,7 +269,7 @@ export default function Visit() {
 function Field({ id, label, error, value, onChange, ...props }) {
   return (
     <div>
-      <label htmlFor={id} className="text-sm font-semibold text-ink">
+      <label htmlFor={id} className="text-sm font-semibold text-forest">
         {label}
       </label>
       <input
@@ -274,7 +278,7 @@ function Field({ id, label, error, value, onChange, ...props }) {
         onChange={(event) => onChange(event.target.value)}
         aria-invalid={Boolean(error)}
         aria-describedby={error ? `${id}-error` : undefined}
-        className="mt-2 w-full rounded-xl border border-line px-4 py-3 text-sm outline-none focus:border-brand"
+        className="mt-2 w-full rounded-2xl border border-line px-4 py-3 text-sm outline-none focus:border-teal"
         {...props}
       />
       {error ? (
