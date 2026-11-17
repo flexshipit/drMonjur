@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useId, useRef, useState } from "react";
-import { Check, Copy, Mail, MapPin, Phone } from "lucide-react";
+import { Check, Copy, Mail, MapPin, Phone, Sparkles } from "lucide-react";
 import { chambers, concerns, doctor } from "@/lib/profile";
 import { Container, Eyebrow } from "@/components/ui";
 
@@ -67,105 +67,106 @@ export default function Visit() {
   }
 
   return (
-    <section id="visit" className="scroll-mt-24 bg-forest py-16 text-ivory sm:py-20">
-      <Container className="grid items-start gap-12 lg:grid-cols-[0.9fr_1.1fr]">
+    <section id="visit" className="scroll-mt-24 bg-gradient-to-b from-forest to-forest-dark py-16 text-ivory sm:py-24">
+      <Container className="grid items-start gap-12 lg:grid-cols-[0.95fr_1.05fr]">
         <div>
-          <Eyebrow light>Visit</Eyebrow>
-          <h2 className="font-display mt-3 text-3xl font-semibold sm:text-4xl">
-            Call, write, or prepare a short visit note.
+          <Eyebrow light>Consultation &amp; Serial</Eyebrow>
+          <h2 className="font-display mt-4 text-3xl font-normal sm:text-4xl leading-tight">
+            Plan your consultation or prepare a quick visit note
           </h2>
-          <p className="mt-4 max-w-md text-base leading-7 text-ivory/75 sm:text-lg">
-            Serials for Gazipur are taken on the Popular hotline. For Mirpur,
-            call New Peacy Lab Ltd. His personal mobile and email are listed
-            here as given.
+          <p className="mt-4 max-w-md text-base leading-relaxed text-ivory/80">
+            For Gazipur chamber, call the Popular hotline. For Mirpur chamber, contact New Peacy
+            Lab Ltd. You can also prepare a short summary note below to take with you or share directly.
           </p>
 
           <div className="mt-8 space-y-4">
             {chambers.map((chamber) => (
               <div
                 key={chamber.id}
-                className="border border-ivory/15 bg-white/5 p-6"
+                className="rounded-2xl border border-white/15 bg-white/5 p-6 backdrop-blur-sm shadow-xs"
               >
-                <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-mint">
-                  {chamber.area}
+                <div className="flex items-center justify-between">
+                  <span className="text-[11px] font-semibold uppercase tracking-wider text-mint">
+                    {chamber.area}
+                  </span>
+                  <span className="text-xs text-ivory/70">{chamber.hours}</span>
+                </div>
+                <p className="font-display mt-2 text-xl font-medium text-white">{chamber.name}</p>
+                <p className="mt-3 flex items-start gap-2 text-xs sm:text-sm text-ivory/75">
+                  <MapPin className="mt-0.5 size-4 shrink-0 text-mint" aria-hidden />
+                  <span>{chamber.address}</span>
                 </p>
-                <p className="font-display mt-3 text-xl">{chamber.name}</p>
-                <p className="mt-1 text-ivory/75">{chamber.hours}</p>
-                <p className="mt-4 inline-flex items-start gap-2 text-sm">
-                  <MapPin className="mt-0.5 size-4 shrink-0" aria-hidden />
-                  {chamber.address}
-                </p>
-                <div className="mt-3 flex flex-wrap gap-x-4 gap-y-2">
+                <div className="mt-4 flex flex-wrap gap-2">
                   {chamber.phones.map((phone) => (
                     <a
                       key={phone.value}
                       href={phone.href}
-                      className="inline-flex items-center gap-2 text-sm font-semibold text-mint"
+                      className="inline-flex items-center gap-1.5 rounded-full bg-white/10 px-3.5 py-1.5 text-xs font-semibold text-mint hover:bg-white/20 transition-colors"
                     >
-                      <Phone className="size-4" aria-hidden />
-                      {phone.value}
+                      <Phone className="size-3" aria-hidden />
+                      <span>{phone.value}</span>
                     </a>
                   ))}
                 </div>
               </div>
             ))}
-            <div className="border border-ivory/15 bg-white/5 p-6">
-              <p className="inline-flex items-center gap-2 text-sm">
-                <Mail className="size-4 text-copper" aria-hidden />
+
+            <div className="rounded-2xl border border-white/15 bg-white/5 p-6 backdrop-blur-sm">
+              <p className="inline-flex items-center gap-2 text-sm text-ivory/90">
+                <Mail className="size-4 text-mint" aria-hidden />
                 <a href={doctor.emailHref} className="hover:underline">
                   {doctor.email}
                 </a>
               </p>
-              <p className="mt-3 text-sm text-ivory/70">
-                BMDC {doctor.bmdc}. {doctor.bcs}.
+              <p className="mt-2 text-xs text-ivory/70">
+                Doctor's Direct Contact: <span className="font-semibold text-white">{doctor.mobile}</span> · BMDC {doctor.bmdc}
               </p>
             </div>
           </div>
         </div>
 
-        <div className="border border-ivory/10 bg-ivory p-6 text-ink sm:p-8">
+        <div className="rounded-3xl border border-white/10 bg-white p-7 text-ink shadow-2xl sm:p-9">
           {note ? (
             <div>
-              <p className="inline-flex items-center gap-2 text-sm font-semibold text-teal">
-                <Check className="size-4" aria-hidden />
-                Visit note ready
-              </p>
+              <div className="inline-flex items-center gap-2 rounded-full border border-teal/20 bg-mint/70 px-3 py-1 text-xs font-semibold text-teal shadow-2xs">
+                <Check className="size-3.5" aria-hidden />
+                <span>Visit note prepared</span>
+              </div>
               <h3
                 tabIndex={-1}
                 ref={headingRef}
-                className="font-display mt-3 text-2xl font-semibold outline-none"
+                className="font-display mt-4 text-2xl font-normal outline-none text-forest"
               >
                 {note.name}
               </h3>
-              <dl className="mt-5 space-y-3 text-sm">
-                <div className="flex justify-between gap-4 border-b border-line pb-3">
-                  <dt className="text-muted">Phone</dt>
-                  <dd className="font-medium">{note.phone}</dd>
+              <div className="mt-5 rounded-2xl border border-teal/15 bg-sand/80 p-5 space-y-3 text-sm">
+                <div className="flex justify-between gap-4 border-b border-line/70 pb-3">
+                  <dt className="text-muted">Contact Phone</dt>
+                  <dd className="font-medium text-forest">{note.phone}</dd>
                 </div>
-                <div className="flex justify-between gap-4 border-b border-line pb-3">
-                  <dt className="text-muted">Concern</dt>
-                  <dd className="text-right font-medium">{note.concern}</dd>
+                <div className="flex justify-between gap-4 border-b border-line/70 pb-3">
+                  <dt className="text-muted">Clinical Concern</dt>
+                  <dd className="text-right font-medium text-forest">{note.concern}</dd>
                 </div>
                 {note.note ? (
                   <div>
-                    <dt className="text-muted">Note</dt>
-                    <dd className="mt-1 font-medium">{note.note}</dd>
+                    <dt className="text-muted">Notes / Symptoms</dt>
+                    <dd className="mt-1 font-medium text-ink">{note.note}</dd>
                   </div>
                 ) : null}
-              </dl>
-              <p className="mt-5 text-sm leading-6 text-muted">
-                This page keeps the note on your screen. It does not send it to
-                the chamber. Call {doctor.mobile}, the Popular hotline
-                09666787816, or New Peacy Lab Ltd. to confirm a serial.
+              </div>
+              <p className="mt-4 text-xs leading-relaxed text-muted">
+                This note is saved locally on your screen for your convenience. Please call the hotline
+                or chamber directly to confirm your token or serial time.
               </p>
               <div className="mt-6 flex flex-col gap-3 sm:flex-row">
                 <button
                   type="button"
                   onClick={copyNote}
-                  className="inline-flex items-center justify-center gap-2 bg-forest px-5 py-3 text-sm font-semibold text-ivory hover:bg-teal"
+                  className="inline-flex items-center justify-center gap-2 rounded-xl bg-forest px-6 py-3.5 text-sm font-semibold text-ivory shadow-md shadow-forest/15 hover:bg-teal transition-all"
                 >
                   {copied ? <Check className="size-4" /> : <Copy className="size-4" />}
-                  {copied ? "Copied" : "Copy visit note"}
+                  <span>{copied ? "Copied to Clipboard" : "Copy Visit Note"}</span>
                 </button>
                 <button
                   type="button"
@@ -173,45 +174,51 @@ export default function Visit() {
                     setNote(null);
                     setValues(initial);
                   }}
-                  className="border border-line px-5 py-3 text-sm font-semibold text-forest hover:bg-sand"
+                  className="rounded-xl border border-line bg-white px-5 py-3.5 text-sm font-semibold text-forest shadow-2xs hover:bg-sand transition-all"
                 >
-                  Start another
+                  Start another note
                 </button>
               </div>
             </div>
           ) : (
             <form onSubmit={onSubmit} noValidate>
-              <h3 className="font-display text-2xl font-semibold">
+              <div className="flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-teal">
+                <Sparkles className="size-3.5" aria-hidden />
+                <span>Patient Helper</span>
+              </div>
+              <h3 className="font-display mt-2 text-2xl font-normal text-forest">
                 Prepare a visit note
               </h3>
-              <p className="mt-2 text-sm leading-6 text-muted">
-                For {doctor.shortName}, BMDC {doctor.bmdc}.
+              <p className="mt-1.5 text-xs text-muted leading-relaxed">
+                Fill this out before your consultation with {doctor.shortName} to summarize your key questions.
               </p>
 
               <div className="mt-6 space-y-4">
                 <Field
                   id={`${formId}-name`}
-                  label="Full name"
+                  label="Patient full name"
                   error={errors.name}
                   value={values.name}
                   onChange={(value) => update("name", value)}
                   autoComplete="name"
+                  placeholder="e.g. Md. Rahman"
                 />
                 <Field
                   id={`${formId}-phone`}
-                  label="Phone"
+                  label="Contact phone number"
                   error={errors.phone}
                   value={values.phone}
                   onChange={(value) => update("phone", value)}
                   autoComplete="tel"
                   inputMode="tel"
+                  placeholder="e.g. 01700-000000"
                 />
                 <div>
                   <label
                     htmlFor={`${formId}-concern`}
-                    className="text-sm font-semibold text-forest"
+                    className="text-xs font-semibold uppercase tracking-wider text-forest"
                   >
-                    Area of concern
+                    Area of clinical concern
                   </label>
                   <select
                     id={`${formId}-concern`}
@@ -219,9 +226,9 @@ export default function Visit() {
                     onChange={(event) => update("concern", event.target.value)}
                     aria-invalid={Boolean(errors.concern)}
                     aria-describedby={errors.concern ? `${formId}-concern-error` : undefined}
-                    className="mt-2 w-full appearance-none border border-line bg-white px-4 py-3 text-sm text-ink outline-none focus:border-teal"
+                    className="mt-2 w-full appearance-none rounded-xl border border-line/80 bg-sand/40 px-4 py-3 text-sm text-ink outline-none transition-all focus:border-teal focus:bg-white focus:ring-2 focus:ring-teal/20"
                   >
-                    <option value="">Select one</option>
+                    <option value="">Select an area of concern</option>
                     {concerns.map((item) => (
                       <option key={item} value={item}>
                         {item}
@@ -229,7 +236,7 @@ export default function Visit() {
                     ))}
                   </select>
                   {errors.concern ? (
-                    <p id={`${formId}-concern-error`} className="mt-1.5 text-sm text-rose">
+                    <p id={`${formId}-concern-error`} className="mt-1.5 text-xs text-rose">
                       {errors.concern}
                     </p>
                   ) : null}
@@ -237,9 +244,9 @@ export default function Visit() {
                 <div>
                   <label
                     htmlFor={`${formId}-note`}
-                    className="text-sm font-semibold text-forest"
+                    className="text-xs font-semibold uppercase tracking-wider text-forest"
                   >
-                    Note <span className="font-normal text-muted">(optional)</span>
+                    Brief description or medical history <span className="font-normal text-muted">(optional)</span>
                   </label>
                   <textarea
                     id={`${formId}-note`}
@@ -247,16 +254,17 @@ export default function Visit() {
                     maxLength={400}
                     value={values.note}
                     onChange={(event) => update("note", event.target.value)}
-                    className="mt-2 w-full resize-y border border-line px-4 py-3 text-sm outline-none focus:border-teal"
+                    placeholder="Mention previous diagnosis, biopsy results, or specific concerns..."
+                    className="mt-2 w-full resize-y rounded-xl border border-line/80 bg-sand/40 px-4 py-3 text-sm outline-none transition-all focus:border-teal focus:bg-white focus:ring-2 focus:ring-teal/20"
                   />
                 </div>
               </div>
 
               <button
                 type="submit"
-                className="mt-6 inline-flex w-full items-center justify-center bg-forest px-5 py-3.5 text-sm font-semibold text-ivory hover:bg-teal"
+                className="mt-6 inline-flex w-full items-center justify-center rounded-xl bg-forest px-6 py-3.5 text-sm font-semibold text-ivory shadow-md shadow-forest/15 transition-all hover:bg-teal hover:shadow-lg"
               >
-                Create visit note
+                Generate Visit Note
               </button>
             </form>
           )}
@@ -266,10 +274,10 @@ export default function Visit() {
   );
 }
 
-function Field({ id, label, error, value, onChange, ...props }) {
+function Field({ id, label, error, value, onChange, placeholder, ...props }) {
   return (
     <div>
-      <label htmlFor={id} className="text-sm font-semibold text-forest">
+      <label htmlFor={id} className="text-xs font-semibold uppercase tracking-wider text-forest">
         {label}
       </label>
       <input
@@ -278,11 +286,12 @@ function Field({ id, label, error, value, onChange, ...props }) {
         onChange={(event) => onChange(event.target.value)}
         aria-invalid={Boolean(error)}
         aria-describedby={error ? `${id}-error` : undefined}
-        className="mt-2 w-full border border-line px-4 py-3 text-sm outline-none focus:border-teal"
+        placeholder={placeholder}
+        className="mt-2 w-full rounded-xl border border-line/80 bg-sand/40 px-4 py-3 text-sm outline-none transition-all focus:border-teal focus:bg-white focus:ring-2 focus:ring-teal/20"
         {...props}
       />
       {error ? (
-        <p id={`${id}-error`} className="mt-1.5 text-sm text-rose">
+        <p id={`${id}-error`} className="mt-1.5 text-xs text-rose">
           {error}
         </p>
       ) : null}

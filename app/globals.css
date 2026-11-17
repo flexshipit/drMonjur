@@ -1,20 +1,27 @@
 @import "tailwindcss";
 
 @theme inline {
-  --color-ink: #1b2422;
-  --color-forest: #0b3d36;
-  --color-teal: #14685e;
-  --color-mint: #e8f1ee;
-  --color-sand: #f4f6f5;
+  --color-ink: #13221f;
+  --color-forest: #08332b;
+  --color-forest-dark: #05211b;
+  --color-forest-light: #0d4a3e;
+  --color-teal: #126359;
+  --color-teal-dark: #0e4e46;
+  --color-mint: #e4eeeb;
+  --color-mint-subtle: #f2f7f5;
+  --color-sand: #f8faf9;
+  --color-sand-muted: #eef3f1;
   --color-ivory: #ffffff;
   --color-orchid: #4a3b78;
-  --color-copper: #a34a2e;
-  --color-muted: #5d6764;
-  --color-line: #d7dddb;
+  --color-copper: #9b3d24;
+  --color-muted: #556461;
+  --color-line: #dbe4e1;
+  --color-line-dark: #123d35;
   --color-rose: #b42318;
-  --font-sans: var(--font-roboto), "Segoe UI", sans-serif;
-  --font-display: var(--font-poppins), "Segoe UI", sans-serif;
-  --font-bengali: var(--font-noto-bengali), "Nirmala UI", sans-serif;
+  --font-sans: var(--font-sans), system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-display: var(--font-serif), Georgia, Cambria, serif;
+  --font-serif: var(--font-serif), Georgia, Cambria, serif;
+  --font-bengali: var(--font-noto-bengali), "Segoe UI", sans-serif;
 }
 
 html {
@@ -25,15 +32,17 @@ body {
   background: var(--color-sand);
   color: var(--color-ink);
   font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 ::selection {
-  background: #0b3d36;
+  background: #08332b;
   color: #ffffff;
 }
 
 :focus-visible {
-  outline: 2px solid #14685e;
+  outline: 2px solid #126359;
   outline-offset: 3px;
 }
 
@@ -41,10 +50,22 @@ body {
   font-family: var(--font-display);
 }
 
+.font-serif {
+  font-family: var(--font-serif);
+}
+
+.font-sans {
+  font-family: var(--font-sans);
+}
+
+.font-bengali {
+  font-family: var(--font-bengali);
+}
+
 .shell {
   margin-inline: auto;
   width: 100%;
-  max-width: 1600px;
+  max-width: 1240px;
   padding-inline: 1.25rem;
 }
 
@@ -60,14 +81,14 @@ body {
   }
 }
 
-@media (min-width: 1536px) {
-  .shell {
-    padding-inline: 3rem;
-  }
-}
-
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
   }
+}
+
+/* Subtle background textures */
+.bg-subtle-pattern {
+  background-image: radial-gradient(rgba(18, 99, 89, 0.08) 1px, transparent 1px);
+  background-size: 24px 24px;
 }

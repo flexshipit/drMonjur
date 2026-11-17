@@ -4,12 +4,18 @@ export function Container({ className = "", children }) {
 
 export function Eyebrow({ children, light = false }) {
   return (
-    <p
-      className={`text-xs font-semibold uppercase tracking-[0.14em] ${
-        light ? "text-mint" : "text-teal"
+    <div
+      className={`inline-flex items-center gap-2 rounded-full px-3 py-1 text-xs font-semibold tracking-wider uppercase ${
+        light
+          ? "border border-mint/20 bg-white/10 text-mint"
+          : "border border-teal/15 bg-mint/50 text-teal"
       }`}
     >
-      {children}
-    </p>
+      <span
+        className={`size-1.5 rounded-full ${light ? "bg-mint" : "bg-teal"}`}
+        aria-hidden="true"
+      />
+      <span>{children}</span>
+    </div>
   );
 }

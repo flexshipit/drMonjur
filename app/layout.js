@@ -1,23 +1,23 @@
-import { Noto_Sans_Bengali, Poppins, Roboto } from "next/font/google";
+import { Lora, Noto_Sans_Bengali, Plus_Jakarta_Sans } from "next/font/google";
 import "./globals.css";
 
-const roboto = Roboto({
+const plusJakartaSans = Plus_Jakarta_Sans({
   subsets: ["latin"],
-  weight: ["400", "500", "700"],
-  variable: "--font-roboto",
+  weight: ["400", "500", "600", "700"],
+  variable: "--font-sans",
   display: "swap",
 });
 
-const poppins = Poppins({
+const lora = Lora({
   subsets: ["latin"],
-  weight: ["500", "600", "700"],
-  variable: "--font-poppins",
+  weight: ["400", "500", "600", "700"],
+  variable: "--font-serif",
   display: "swap",
 });
 
 const bengali = Noto_Sans_Bengali({
   subsets: ["bengali"],
-  weight: ["400", "600", "700"],
+  weight: ["400", "500", "600", "700"],
   variable: "--font-noto-bengali",
   display: "swap",
 });
@@ -36,9 +36,9 @@ export default function RootLayout({ children }) {
   return (
     <html
       lang="en"
-      className={`${roboto.variable} ${poppins.variable} ${bengali.variable} h-full antialiased`}
+      className={`${plusJakartaSans.variable} ${lora.variable} ${bengali.variable} h-full antialiased`}
     >
-      <body className="min-h-full bg-sand font-sans text-ink" suppressHydrationWarning>
+      <body className="min-h-full bg-sand font-sans text-ink selection:bg-forest selection:text-white" suppressHydrationWarning>
         {children}
       </body>
     </html>

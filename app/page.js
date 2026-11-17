@@ -9,6 +9,7 @@ import Chambers from "@/components/Chambers";
 import Visit from "@/components/Visit";
 import Footer from "@/components/Footer";
 import { doctor } from "@/lib/profile";
+import { Phone } from "lucide-react";
 
 const jsonLd = {
   "@context": "https://schema.org",
@@ -33,19 +34,24 @@ export default function HomePage() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
-      <div className="bg-forest text-ivory">
-        <div className="shell flex flex-wrap items-center justify-between gap-3 py-2.5 text-sm">
-          <p className="font-bengali">
-            <span className="font-semibold">শুক্রবার · গাজীপুর</span>
-            <span className="text-ivory/70"> · পপুলার ডায়াগনস্টিক · ৫টা–৮টা</span>
-            <span className="mx-2 text-copper">·</span>
-            <span className="font-semibold">মিরপুর-১</span>
-            <span className="text-ivory/70"> · নিউ পিসি ল্যাব লিঃ · সন্ধ্যা ৭টা–১০টা</span>
-          </p>
+      <div className="border-b border-white/10 bg-forest-dark text-ivory">
+        <div className="shell flex flex-wrap items-center justify-between gap-3 py-2 text-xs sm:text-sm">
+          <div className="flex flex-wrap items-center gap-2 font-bengali">
+            <span className="inline-flex items-center rounded-full bg-mint/15 px-2.5 py-0.5 text-xs font-semibold text-mint">
+              শুক্রবার · গাজীপুর
+            </span>
+            <span className="text-ivory/80">পপুলার ডায়াগনস্টিক (বিকাল ৫টা–৮টা)</span>
+            <span className="hidden text-ivory/30 sm:inline">|</span>
+            <span className="inline-flex items-center rounded-full bg-mint/15 px-2.5 py-0.5 text-xs font-semibold text-mint">
+              মিরপুর-১
+            </span>
+            <span className="text-ivory/80">নিউ পিসি ল্যাব লিঃ (সন্ধ্যা ৭টা–১০টা)</span>
+          </div>
           <a
             href="tel:09666787816"
-            className="shrink-0 font-semibold text-mint underline-offset-4 hover:underline"
+            className="inline-flex items-center gap-1.5 rounded-full bg-mint/15 px-3 py-1 text-xs font-semibold text-mint transition-colors hover:bg-mint hover:text-forest"
           >
+            <Phone className="size-3" aria-hidden />
             সিরিয়াল: 09666787816
           </a>
         </div>
